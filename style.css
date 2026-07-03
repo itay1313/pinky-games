@@ -1,0 +1,175 @@
+/* ================================================
+   Pinky Online Games — bubblegum theme
+   ================================================ */
+:root {
+  --pink: #ff5fa2;
+  --pink-deep: #e63d87;
+  --purple: #7b5fff;
+  --cream: #fff7fb;
+  --ink: #3a2340;
+  --ink-soft: #7a6386;
+  --card: #ffffff;
+  --radius: 24px;
+  --shadow: 0 10px 30px rgba(230, 61, 135, .13);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Varela Round', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- floating blobs ---------- */
+.bg-blob {
+  position: fixed; border-radius: 50%; filter: blur(60px); opacity: .35;
+  pointer-events: none; z-index: 0; animation: drift 18s ease-in-out infinite alternate;
+}
+.b1 { width: 45vw; height: 45vw; background: #ffd3e6; top: -12vw; right: -12vw; }
+.b2 { width: 38vw; height: 38vw; background: #ddd3ff; bottom: -10vw; left: -12vw; animation-delay: -6s; }
+.b3 { width: 26vw; height: 26vw; background: #d3f5ef; top: 40vh; left: 8vw; animation-delay: -12s; }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(4vw,-3vh) scale(1.12); } }
+
+header, nav, main, footer { position: relative; z-index: 1; }
+
+/* ---------- header ---------- */
+.site-header { text-align: center; padding: 34px 18px 10px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-ribbon { font-size: clamp(34px, 7vw, 52px); display: inline-block; animation: bounce 2.6s ease-in-out infinite; }
+@keyframes bounce { 0%,100% { transform: rotate(-8deg) translateY(0); } 50% { transform: rotate(6deg) translateY(-7px); } }
+.logo-text {
+  font-size: clamp(44px, 10vw, 72px); font-weight: 700; letter-spacing: 1px; direction: ltr;
+}
+.logo-text b, .logo-text i { font-style: normal; font-weight: 700; }
+.logo-text b { color: var(--pink); }
+.logo-text i { color: var(--purple); }
+.tagline { color: var(--ink-soft); font-size: clamp(15px, 4vw, 19px); margin-top: 6px; }
+
+.search-wrap { max-width: 460px; margin: 22px auto 0; padding: 0 6px; }
+#search {
+  width: 100%; padding: 15px 22px; font: inherit; font-size: 17px; color: var(--ink);
+  background: var(--card); border: 3px solid #ffd3e6; border-radius: 40px; outline: none;
+  box-shadow: var(--shadow); transition: border-color .2s;
+}
+#search:focus { border-color: var(--pink); }
+#search::placeholder { color: #c9a8bc; }
+
+/* ---------- filter chips ---------- */
+.filters { max-width: 1060px; margin: 22px auto 8px; padding: 0 18px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-bottom: 10px; }
+.chip {
+  border: none; cursor: pointer; font: inherit; font-size: 15px; color: var(--ink);
+  background: var(--card); padding: 9px 18px; border-radius: 30px;
+  box-shadow: 0 3px 10px rgba(58, 35, 64, .08); transition: transform .12s, background .2s, color .2s;
+  user-select: none;
+}
+.chip:hover { transform: translateY(-2px); }
+.chip:active { transform: scale(.95); }
+.chip.on { background: linear-gradient(135deg, var(--pink), var(--purple)); color: #fff; }
+.chip.fav-chip.on { background: linear-gradient(135deg, #ff5f7a, #ff9d5f); }
+
+/* ---------- sections & grid ---------- */
+main { max-width: 1060px; margin: 0 auto; padding: 10px 18px 40px; }
+.section-title { font-size: clamp(20px, 5vw, 26px); margin: 26px 4px 16px; }
+.grid {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+}
+
+/* ---------- game card ---------- */
+.card {
+  background: var(--card); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; position: relative;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(230, 61, 135, .22); }
+.card:hover .cover-emoji { transform: scale(1.15) rotate(-8deg); }
+
+.cover {
+  position: relative; height: 150px; display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255,255,255,.28) 0 12px, transparent 13px),
+    radial-gradient(circle at 75% 65%, rgba(255,255,255,.2) 0 9px, transparent 10px),
+    radial-gradient(circle at 55% 20%, rgba(255,255,255,.18) 0 7px, transparent 8px),
+    linear-gradient(135deg, var(--g1), var(--g2));
+}
+.cover-emoji { font-size: 74px; filter: drop-shadow(0 6px 10px rgba(0,0,0,.25)); transition: transform .25s ease; }
+.age-badge {
+  position: absolute; bottom: 10px; inset-inline-start: 12px;
+  background: rgba(255,255,255,.92); color: var(--ink); font-size: 13px; font-weight: 700;
+  padding: 3px 11px; border-radius: 20px;
+}
+.fav {
+  position: absolute; top: 10px; inset-inline-end: 12px; z-index: 2;
+  border: none; cursor: pointer; font-size: 20px; line-height: 1;
+  background: rgba(255,255,255,.92); width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center; transition: transform .15s;
+}
+.fav:hover { transform: scale(1.15); }
+.fav.on { animation: pop .3s ease; }
+@keyframes pop { 50% { transform: scale(1.4); } }
+
+.card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card-body h3 { font-size: 19px; }
+.card-tagline { color: var(--pink-deep); font-size: 13.5px; }
+.card-desc { color: var(--ink-soft); font-size: 14px; line-height: 1.55; flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span {
+  font-size: 12.5px; background: #f6ecf4; color: var(--ink-soft);
+  padding: 3px 11px; border-radius: 16px;
+}
+.play-btn {
+  margin-top: 10px; border: none; cursor: pointer; font: inherit; font-size: 17px; font-weight: 700;
+  color: #fff; background: linear-gradient(135deg, var(--pink), var(--purple));
+  padding: 13px; border-radius: 16px; box-shadow: 0 5px 0 rgba(123, 95, 255, .35);
+  transition: transform .12s, box-shadow .12s;
+}
+.play-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 rgba(123, 95, 255, .35); }
+
+/* ---------- empty state ---------- */
+.empty { text-align: center; padding: 50px 0 30px; color: var(--ink-soft); font-size: 17px; line-height: 1.7; }
+.empty-emoji { font-size: 58px; margin-bottom: 10px; }
+.clear-btn { margin-top: 16px; background: linear-gradient(135deg, var(--pink), var(--purple)); color: #fff; }
+
+/* ---------- footer ---------- */
+.site-footer { text-align: center; color: var(--ink-soft); font-size: 14px; padding: 26px 16px 34px; }
+
+/* ---------- fullscreen player ---------- */
+.player { position: fixed; inset: 0; z-index: 50; background: #14060f; display: flex; flex-direction: column; }
+.player-bar {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+  padding-top: max(10px, env(safe-area-inset-top));
+  background: linear-gradient(135deg, var(--pink-deep), var(--purple)); color: #fff;
+}
+.player-title { flex: 1; text-align: center; font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pbtn {
+  border: none; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; color: #fff;
+  background: rgba(255,255,255,.18); padding: 8px 14px; border-radius: 20px; text-decoration: none;
+  transition: background .15s;
+}
+.pbtn:hover { background: rgba(255,255,255,.32); }
+.player-stage { position: relative; flex: 1; }
+#player-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #14060f; }
+.spinner {
+  position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
+  color: #ffd3e6; gap: 8px; z-index: 1; background: #14060f;
+}
+.spinner span { font-size: 54px; animation: spinWiggle 1s ease-in-out infinite; display: inline-block; }
+@keyframes spinWiggle { 0%,100% { transform: rotate(-12deg) scale(1); } 50% { transform: rotate(12deg) scale(1.15); } }
+
+.hidden { display: none !important; }
+
+/* ---------- small screens ---------- */
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cover { height: 118px; }
+  .cover-emoji { font-size: 56px; }
+  .card-body { padding: 12px 13px 14px; }
+  .card-body h3 { font-size: 16px; }
+  .card-desc { font-size: 13px; }
+  .play-btn { font-size: 15px; padding: 11px; }
+}
