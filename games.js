@@ -47,6 +47,20 @@ const GAMES = [
     g2: '#ff5fa2',
   },
   {
+    id: 'magic-memory',
+    title: 'זיכרון קסום',
+    emoji: '🧠',
+    tagline: 'מוצאים זוגות, שוברים שיאים',
+    desc: 'הופכים קלפים ומחפשים זוגות! שלוש רמות קושי, נושאים מתחלפים (חיות, חלל, אוכל…), כוכבים על יעילות ושיאים אישיים.',
+    url: 'games/memory/',
+    embed: true,
+    ages: ['toddlers', 'kids', 'teens'],
+    ageBadge: '3+',
+    cats: ['חשיבה', 'למידה'],
+    g1: '#8a63e0',
+    g2: '#5fd0ff',
+  },
+  {
     id: 'dreamwear',
     title: 'DreamWear — סטודיו אופנה',
     emoji: '🎨',
@@ -65,7 +79,7 @@ const GAMES = [
 // coming-soon teasers — shown at the bottom, not playable yet
 const COMING_SOON = [
   { emoji: '🏎️', title: 'מרוץ מטורף' },
-  { emoji: '🧩', title: 'פאזל קסום' },
+  { emoji: '🎣', title: 'מסע דיג' },
   { emoji: '🚀', title: 'הרפתקה בחלל' },
   { emoji: '⚽', title: 'כדורגל רחוב' },
   { emoji: '🧠', title: 'טריוויה למשפחה' },
