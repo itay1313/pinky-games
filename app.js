@@ -140,6 +140,20 @@
     if (e.key === 'Escape' && !player.classList.contains('hidden')) closeGame();
   });
 
+  // ---------- coming-soon placeholders ----------
+  const soonGrid = $('soon-grid');
+  soonGrid.innerHTML = COMING_SOON.map(s => `
+    <div class="soon-card" tabindex="0">
+      <span class="soon-emoji">${s.emoji}</span>
+      <span class="soon-title">${s.title}</span>
+      <span class="soon-badge">בקרוב ✨</span>
+    </div>`).join('');
+  soonGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.soon-card'); if (!card) return;
+    card.classList.remove('wiggle'); void card.offsetWidth;
+    card.classList.add('wiggle');
+  });
+
   // ---------- go ----------
   buildChips();
   render();

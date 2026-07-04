@@ -37,7 +37,7 @@ const GAMES = [
     title: 'גן החיות של נלי',
     emoji: '🦁',
     tagline: 'קולות של חיות אמיתיות',
-    desc: 'גן חיות קסום לפעוטות — לוחצים על חיה ושומעים את הקול האמיתי שלה! 17 חיות עם תמונות וצלילים אמיתיים.',
+    desc: 'גן חיות קסום לפעוטות — לוחצים על חיה ושומעים את הקול האמיתי שלה! 17 חיות עם תמונות וצלילים אמיתיים, ומשחק "מי אני?".',
     url: 'https://nelly-zoo.vercel.app',
     embed: true,
     ages: ['toddlers', 'kids'],
@@ -46,6 +46,36 @@ const GAMES = [
     g1: '#ffb347',
     g2: '#ff5fa2',
   },
+  {
+    id: 'dreamwear',
+    title: 'DreamWear — סטודיו אופנה',
+    emoji: '🎨',
+    tagline: 'ציירו בד, וה-AI מלביש אתכם',
+    desc: 'מציירים דוגמה על הקנבס, בוחרים דמות ולבוש — והקסם מלביש את הציור שלכם על הדמות! שמלה או חולצה ומכנסיים, שמירה והורדה של הלוק.',
+    url: 'https://dreamwear-mini.vercel.app',
+    embed: true,
+    ages: ['kids', 'teens'],
+    ageBadge: '4+',
+    cats: ['יצירה', 'אופנה'],
+    g1: '#ff8ac2',
+    g2: '#a78bfa',
+  },
+];
+
+// coming-soon teasers — shown at the bottom, not playable yet
+const COMING_SOON = [
+  { emoji: '🏎️', title: 'מרוץ מטורף' },
+  { emoji: '🧩', title: 'פאזל קסום' },
+  { emoji: '🚀', title: 'הרפתקה בחלל' },
+  { emoji: '⚽', title: 'כדורגל רחוב' },
+  { emoji: '🧠', title: 'טריוויה למשפחה' },
+  { emoji: '🍰', title: 'מאפיית הקסמים' },
+  { emoji: '🎹', title: 'מוזיקה בקצב' },
+  { emoji: '🧙', title: 'בית ספר לקוסמים' },
+  { emoji: '🦖', title: 'עולם הדינוזאורים' },
+  { emoji: '🌊', title: 'צוללת האוצרות' },
+  { emoji: '🐱', title: 'חתולים בחלל' },
+  { emoji: '🏰', title: 'טירת החידות' },
 ];
 
 // audience filter chips (order matters)
